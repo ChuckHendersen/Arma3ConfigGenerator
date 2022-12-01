@@ -1,0 +1,30 @@
+TAG_fnc_sortConfig = {  
+ params[ "_config", "_type", [ "_subType", "" ] ];  
+ 
+ ( "getNumber( _x >> 'scope' ) isEqualTo 2"configClasses( configFile >> _config ) select { 
+  configName _x call BIS_fnc_itemType params[ "_itemType", "_itemSubType" ]; 
+  _type == _itemType && { 
+   ( _subType isEqualType "" && { _subType == "" || { _subType == _itemSubType }} ) || 
+   ( _subType isEqualType [] && { { _x == _itemSubType }count _subType > 0 } ) 
+  }  
+ }) apply { configName _x };  
+};  
+  
+ 
+{  
+ _x params[ "_var", "_parameters" ];  
+   
+ missionNamespace setVariable [ _var, _parameters call TAG_fnc_sortConfig ];  
+}forEach [ 
+ //[ Global Var, [ Config, Type, SubType/s ] ] 
+ [ "TAG_vests", [ "CfgWeapons", "Equipment", "Vest" ] ],   
+ [ "TAG_uniforms", [ "CfgWeapons", "Equipment", "Uniform" ] ],   
+ [ "TAG_helmets", [ "CfgWeapons", "Equipment", "Headgear" ] ],   
+ [ "TAG_backPacks", [ "CfgVehicles", "Equipment", "Backpack" ] ],   
+ [ "TAG_glasses", [ "CfgGlasses", "Equipment", "Glasses" ] ], 
+ [ "TAG_primaryWeapons", [ "CfgWeapons", "Weapon", [ "AssaultRifle", "MachineGun", "Rifle", "SubmachineGun", "SniperRifle" ] ] ], 
+ [ "TAG_secondaryWeapons", [ "CfgWeapons", "Weapon", [ "Launcher", "MissileLauncher", "RocketLauncher" ] ] ],  
+ [ "TAG_handguns", [ "CfgWeapons", "Weapon", "Handgun" ] ] 
+]; 
+ 
+copyToClipboard str TAG_vests;
