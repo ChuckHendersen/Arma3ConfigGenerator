@@ -7,11 +7,9 @@ import java.nio.file.Paths;
 
 public class Salvatore {
 	private String stringaDaSalvare;
-	private String estensioneFile;
 	
 	public Salvatore (String stringa,String ext) {
 		this.stringaDaSalvare=stringa;
-		this.estensioneFile=ext;
 	}
 	
 	public void creaFileESalvaStringa() throws IOException {

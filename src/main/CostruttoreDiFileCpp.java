@@ -85,7 +85,6 @@ public class CostruttoreDiFileCpp {
 	private List<String> listaClassiGiubbotti;
 	private List<String> listaClassiGiubbottiNoArmour;
 	private List<String> listaNomiAddon;
-	private String cfgPatches = null;
 	
 	public CostruttoreDiFileCpp (List<String> listaNomiClassi, List<String> listaNomiAddon) {
 		this.listaClassiGiubbotti= new LinkedList<>(listaNomiClassi);
